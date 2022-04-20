@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="anchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #fff6cf #fff6cf;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CreateAccountController">
+   <children>
+      <Button fx:id="btnBack" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backToLogin" text="Back" />
+      <Label layoutX="221.0" layoutY="21.0" text="Create Account">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbFirstName" layoutX="109.0" layoutY="179.0" text="First Name" />
+      <Label fx:id="lbLastName" layoutX="332.0" layoutY="179.0" text="Last Name" />
+      <TextField fx:id="tfUsername" layoutX="108.0" layoutY="124.0" promptText="Username" />
+      <PasswordField fx:id="tfPassword" layoutX="331.0" layoutY="124.0" promptText="Password" />
+      <TextField fx:id="tfFirstName" layoutX="109.0" layoutY="196.0" promptText="First Name" />
+      <TextField fx:id="tfLastName" layoutX="332.0" layoutY="196.0" promptText="Last Name" />
+      <RadioButton fx:id="studentToggle" layoutX="224.0" layoutY="248.0" mnemonicParsing="false" text="Student">
+         <toggleGroup>
+            <ToggleGroup fx:id="accountType" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="teacherToggle" layoutX="310.0" layoutY="248.0" mnemonicParsing="false" text="Teacher" toggleGroup="$accountType" />
+      <Button fx:id="btnCreateAccount" layoutX="483.0" layoutY="360.0" mnemonicParsing="false" onAction="#createAccount" text="Create Account" />
+      <Label fx:id="lbUsername" layoutX="108.0" layoutY="107.0" text="Username" />
+      <Label fx:id="lbPassword" layoutX="332.0" layoutY="107.0" text="Password" />
+      <Label fx:id="lbError" alignment="TOP_CENTER" layoutX="161.0" layoutY="275.0" prefHeight="111.0" prefWidth="279.0" textAlignment="CENTER" textFill="RED">
+         <font>
+            <Font size="11.0" />
+         </font></Label>
+   </children>
+</AnchorPane>
