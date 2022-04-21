@@ -12,12 +12,17 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import Exceptions.*;
+import java.io.IOException;
 import java.util.ArrayList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextInputControl;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -51,6 +56,8 @@ public class CreateQuizController implements Initializable {
     
     String errorMessage = "";
     ArrayList<Question> questions = new ArrayList();
+    @FXML
+    private Button btnBack;
     /**
      * Initializes the controller class.
      */
@@ -133,6 +140,29 @@ public class CreateQuizController implements Initializable {
         tfOption1.clear();
         tfOption2.clear();
         tfOption3.clear();
+        
+    }
+    
+
+    
+    public void changeScenes(String filename) throws IOException{
+        Parent tableViewParent = FXMLLoader.load(getClass().getResource(filename));
+        Scene tableViewScene = new Scene(tableViewParent);
+        
+        //get the current stage information
+        Stage window = (Stage)tfQuestion.getScene().getWindow();
+        
+        window.setScene(tableViewScene);
+        window.show();
+    }
+
+
+
+    @FXML
+    private void goBack(ActionEvent event) throws IOException{
+        questions.clear();
+        errorMessage = "";
+        changeScenes("FXMLFiles/Home.fxml");
     }
     
 }

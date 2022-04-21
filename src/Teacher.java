@@ -16,7 +16,7 @@ public class Teacher extends Account{
     public boolean postAccount() {
         try {
             String query = String.format("INSERT INTO accounts (username, password, firstName, lastName, accountType) VALUES ('%s', '%s', '%s', '%s', '%s')",
-                    this.getUsername(), this.getPassword(), firstName, lastName, this.accountType);
+                    this.getUsername(), this.getPassword().replace("'","''"), firstName.replace("'","''"), lastName.replace("'","''"), this.accountType);
             Database.post(query);
             return true;
         } catch (Exception e) {

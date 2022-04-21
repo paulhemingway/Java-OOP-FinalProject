@@ -17,7 +17,7 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <VBox layoutX="14.0" layoutY="34.0" prefHeight="324.0" prefWidth="328.0">
+      <VBox layoutX="14.0" layoutY="38.0" prefHeight="324.0" prefWidth="328.0">
          <children>
             <Label text="Title" />
             <TextField fx:id="tfTitle" prefHeight="26.0" prefWidth="312.0" promptText="Title">
@@ -87,5 +87,6 @@
       <Button fx:id="btnAddQuestion" layoutX="356.0" layoutY="304.0" mnemonicParsing="false" onAction="#addQuestion" text="Add Question" />
       <Button fx:id="btnCreateQuiz" layoutX="498.0" layoutY="304.0" mnemonicParsing="false" onAction="#CreateQuiz" text="Create Quiz" />
       <Label fx:id="lbError" alignment="CENTER" layoutX="169.0" layoutY="347.0" prefHeight="45.0" prefWidth="264.0" textFill="RED" />
+      <Button fx:id="btnBack" layoutX="14.0" layoutY="8.0" mnemonicParsing="false" onAction="#goBack" text="Back" />
    </children>
 </AnchorPane>

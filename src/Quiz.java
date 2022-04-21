@@ -7,7 +7,8 @@ public class Quiz {
     private String title; 
     private String author;
     private ArrayList<Question> questions;
-    private int questionCount, quizID;
+    private int questionCount;
+    private Integer quizID;
     
     //constructor to store it into the database
     public Quiz(String title, String author, ArrayList<Question> questions){
@@ -18,10 +19,11 @@ public class Quiz {
     }
     
     // constructor for getting quizzes from the database
-    public Quiz(int quizID, String author, String title){
+    public Quiz(Integer quizID, String author, String title){
         this.quizID = quizID;
         this.author = author;
         this.title = title;
+        System.out.println("quizCreated");
     }
     
     public String getTitle(){
@@ -30,6 +32,10 @@ public class Quiz {
     
     public String getAuthor(){
         return this.author;
+    }
+    
+    public Integer getQuizID(){
+        return this.quizID;
     }
     
     public ArrayList<Question> getQuestions(){

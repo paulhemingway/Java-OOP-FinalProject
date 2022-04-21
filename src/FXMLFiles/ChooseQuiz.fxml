@@ -7,8 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #fff6cf;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18" fx:controller="FXMLFiles.ChooseQuizController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #fff6cf;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ChooseQuizController">
    <children>
       <Button fx:id="btnBack" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#goBack" text="Back" />
       <Label layoutX="245.0" layoutY="40.0" text="Choose a Quiz">
@@ -19,9 +18,9 @@
       <Button fx:id="btnBegin" layoutX="276.0" layoutY="338.0" mnemonicParsing="false" text="Begin" />
       <TableView fx:id="quizTable" layoutX="152.0" layoutY="74.0" prefHeight="253.0" prefWidth="297.0">
         <columns>
-          <TableColumn prefWidth="76.0" text="Quiz ID" />
-          <TableColumn prefWidth="132.0" text="Title" />
-            <TableColumn prefWidth="88.0" text="Teacher" />
+          <TableColumn fx:id="quizIDColumn" prefWidth="76.0" text="Quiz ID" />
+          <TableColumn fx:id="titleColumn" prefWidth="132.0" text="Title" />
+            <TableColumn fx:id="teacherColumn" prefWidth="88.0" text="Teacher" />
         </columns>
       </TableView>
    </children>

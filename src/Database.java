@@ -131,7 +131,7 @@ public class Database {
             int quizID;
             Connection con = getConnection();
             PreparedStatement statement = con.prepareStatement(String.format("SELECT quizID FROM quizzes WHERE title = '%s' AND author = '%s' ORDER BY quizID DESC LIMIT 1", 
-                    quiz.getTitle(), quiz.getAuthor()));
+                    quiz.getTitle().replace("'","''"), quiz.getAuthor()));
             ResultSet result = statement.executeQuery();
             
             if(result.next()){
@@ -147,7 +147,8 @@ public class Database {
     
     public static void postQuiz(Quiz quiz) throws Exception {
         String quizQuery = String.format("INSERT INTO quizzes (author, title, possibleScore) VALUES ('%s', '%s', '%d')",
-                quiz.getAuthor(), quiz.getTitle(), quiz.getQuestions().size());
+                quiz.getAuthor(), quiz.getTitle().replace("'","''"), quiz.getQuestions().size());
+        System.out.println("Query: " + quizQuery);
         post(quizQuery);
         
         try {
@@ -159,7 +160,8 @@ public class Database {
                 
             for(Question question : quiz.getQuestions()){
                 questionQuery = String.format("INSERT INTO questions (quizID, question, options, answer) VALUES ('%d', '%s', '%s', '%s')", 
-                        quizID, question.getQuestion(), question.getOptionsString(), question.getAnswer());
+                        quizID, question.getQuestion().replace("'","''"), question.getOptionsString().replace("'","''"), question.getAnswer().replace("'","''"));
+                System.out.println(questionQuery);
                 stmt.addBatch(questionQuery);
             }
             stmt.executeBatch();
