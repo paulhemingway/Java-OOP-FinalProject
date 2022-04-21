@@ -82,7 +82,8 @@ public class HomeController implements Initializable {
     }
 
     @FXML
-    private void takeQuiz(ActionEvent event) {
+    private void takeQuiz(ActionEvent event) throws IOException{
+        changeScenes("FXMLFiles/ChooseQuiz.fxml");
     }
 
     @FXML
