@@ -9,12 +9,25 @@ public class Question {
     private String correctAnswer;
     private ArrayList<String> options = new ArrayList();
     
+    //constructor for pushing question to the database
     public Question(String question, String correctAnswer, ArrayList<String> options){
         this.question = question;
         this.correctAnswer = correctAnswer;
         for(String i : options){
             this.options.add(i);
         }
+    }
+    
+    // cosntructor for getting question from the database
+    public Question(String question, String options, String correctAnswer){
+       this.question = question;
+       this.correctAnswer = correctAnswer;
+       
+       // options are loaded into the database separated by newline
+       for (String i : options.split("\n")){
+           this.options.add(i);
+       }
+       
     }
     
     public String getQuestion(){

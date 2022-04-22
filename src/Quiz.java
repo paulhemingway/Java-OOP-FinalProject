@@ -23,7 +23,14 @@ public class Quiz {
         this.quizID = quizID;
         this.author = author;
         this.title = title;
-        System.out.println("quizCreated");
+    }
+    
+    //constructor for actually taking the quiz
+    public Quiz(Integer quizID, ArrayList<Question> questions, String title, int questionCount){
+        this.quizID = quizID;
+        this.questions = questions;
+        this.title = title;
+        this.questionCount = questionCount;
     }
     
     public String getTitle(){

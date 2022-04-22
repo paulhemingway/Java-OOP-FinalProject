@@ -142,9 +142,7 @@ public class CreateQuizController implements Initializable {
         tfOption3.clear();
         
     }
-    
 
-    
     public void changeScenes(String filename) throws IOException{
         Parent tableViewParent = FXMLLoader.load(getClass().getResource(filename));
         Scene tableViewScene = new Scene(tableViewParent);
@@ -155,8 +153,6 @@ public class CreateQuizController implements Initializable {
         window.setScene(tableViewScene);
         window.show();
     }
-
-
 
     @FXML
     private void goBack(ActionEvent event) throws IOException{

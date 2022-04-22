@@ -15,7 +15,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Button fx:id="btnBegin" layoutX="276.0" layoutY="338.0" mnemonicParsing="false" text="Begin" />
+      <Button fx:id="btnBegin" layoutX="276.0" layoutY="338.0" mnemonicParsing="false" onAction="#takeQuiz" text="Begin" />
       <TableView fx:id="quizTable" layoutX="152.0" layoutY="74.0" prefHeight="253.0" prefWidth="297.0">
         <columns>
           <TableColumn fx:id="quizIDColumn" prefWidth="76.0" text="Quiz ID" />

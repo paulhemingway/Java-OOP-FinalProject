@@ -100,4 +100,14 @@ public class ChooseQuizController implements Initializable {
         window.setScene(tableViewScene);
         window.show();
     }
+
+    @FXML
+    private void takeQuiz(ActionEvent event) throws Exception {
+        Quiz quiz = quizTable.getSelectionModel().getSelectedItem();
+        // get all questions from the database
+        ArrayList<Question> questions = Database.getQuestions(quiz.getQuizID());
+        
+        Data.currentQuiz = new Quiz(quiz.getQuizID(), questions, quiz.getTitle(), questions.size());
+        changeScenes("FXMLFiles/TakeQuiz.fxml");
+    }
 }

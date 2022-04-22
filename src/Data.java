@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public class Data {
     public static Teacher currentTeacher = null;
     public static Student currentStudent = null;
+    public static Quiz currentQuiz = null;
     public static boolean isTeacher = false;
     public static boolean isStudent = false;
     
@@ -18,4 +19,5 @@ public class Data {
         isTeacher = false;
         isStudent = false;
     }
+    
 }

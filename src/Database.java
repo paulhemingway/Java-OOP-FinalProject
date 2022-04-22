@@ -126,10 +126,13 @@ public class Database {
         return new String[]{"Something went wrong... Try again."};
     } 
     
+    // after teacher creates the quiz and it posts, we need to get the 
+    // quizID from the quiz that just posted.
     public static int getQuizID(Quiz quiz){
         try {
             int quizID;
             Connection con = getConnection();
+            // just incase there's an identical author/title, grab the latest one
             PreparedStatement statement = con.prepareStatement(String.format("SELECT quizID FROM quizzes WHERE title = '%s' AND author = '%s' ORDER BY quizID DESC LIMIT 1", 
                     quiz.getTitle().replace("'","''"), quiz.getAuthor()));
             ResultSet result = statement.executeQuery();
@@ -169,5 +172,44 @@ public class Database {
         }
         catch(Exception e){System.out.println(e);}
         
+    }
+    
+
+
+// function to pull all data from specific table
+    public static ArrayList<Question> getQuestions(int quizID) throws Exception{
+        ArrayList<HashMap<String, Object>> resultList = new ArrayList<HashMap<String, Object>>();
+        HashMap<String,Object> row;
+        ArrayList<Question> questions = new ArrayList();
+        try {
+            Connection con = getConnection();
+            PreparedStatement statement = con.prepareStatement(String.format("SELECT * FROM questions WHERE quizID = '%s'", quizID));
+            ResultSet result = statement.executeQuery();
+            
+            // get the information on the columns
+            ResultSetMetaData metaData = result.getMetaData();
+            Integer columnCount = metaData.getColumnCount();
+            
+            while(result.next()){
+                row = new HashMap<String, Object>();
+                for (int i = 1; i<= columnCount; i++){
+                    row.put(metaData.getColumnName(i), result.getObject(i));
+                }
+                resultList.add(row);
+            }
+            
+            con.close();
+            
+            for (HashMap<String, Object> i : resultList){
+                Question question = new Question((String)i.get("question"), (String)i.get("options"), (String)i.get("answer"));
+                questions.add(question);
+            }
+            return questions;
+            
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        
+        return null;
     }
 }
