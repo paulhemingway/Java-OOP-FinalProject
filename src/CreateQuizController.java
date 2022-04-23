@@ -140,7 +140,6 @@ public class CreateQuizController implements Initializable {
         tfOption1.clear();
         tfOption2.clear();
         tfOption3.clear();
-        
     }
 
     public void changeScenes(String filename) throws IOException{

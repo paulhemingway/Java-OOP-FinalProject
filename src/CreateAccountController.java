@@ -141,7 +141,9 @@ public class CreateAccountController implements Initializable {
                 throw new EmptyFieldException("Please select account type!\nStudent or Teacher.");
             }
             
-            instantiate(username, password, firstName, lastName);
+            if(valid){
+                instantiate(username, password, firstName, lastName);
+            }
         }
         catch (EmptyFieldException e){errorMessage = e.getMessage();}
         catch (NameTakenException e){errorMessage = e.getMessage();}

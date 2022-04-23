@@ -1,5 +1,6 @@
 
 import java.util.ArrayList;
+import java.util.Collections;
 /**
  *
  * @author paulhemingway
@@ -8,6 +9,7 @@ public class Question {
     private String question;
     private String correctAnswer;
     private ArrayList<String> options = new ArrayList();
+    private int questionNumber;
     
     //constructor for pushing question to the database
     public Question(String question, String correctAnswer, ArrayList<String> options){
@@ -20,6 +22,7 @@ public class Question {
     
     // cosntructor for getting question from the database
     public Question(String question, String options, String correctAnswer){
+        // get question number
        this.question = question;
        this.correctAnswer = correctAnswer;
        
@@ -33,6 +36,7 @@ public class Question {
     public String getQuestion(){
         return this.question;
     }
+   
     
     public String getAnswer(){
         return this.correctAnswer;
@@ -40,6 +44,12 @@ public class Question {
     
     public ArrayList<String> getOptions(){
         return this.options;
+    }
+    
+    public ArrayList<String> getOptionsShuffled(){
+        ArrayList<String> shuffled = new ArrayList<String>(options);
+        Collections.shuffle(shuffled);
+        return shuffled;
     }
     
     public String getOptionsString(){

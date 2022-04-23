@@ -25,7 +25,7 @@ public class Quiz {
         this.title = title;
     }
     
-    //constructor for actually taking the quiz
+    //constructor for actually taking the quiz (storing into 'currentQuiz' static variable in Data class)
     public Quiz(Integer quizID, ArrayList<Question> questions, String title, int questionCount){
         this.quizID = quizID;
         this.questions = questions;

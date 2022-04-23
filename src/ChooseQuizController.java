@@ -1,9 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
-
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -104,6 +98,7 @@ public class ChooseQuizController implements Initializable {
     @FXML
     private void takeQuiz(ActionEvent event) throws Exception {
         Quiz quiz = quizTable.getSelectionModel().getSelectedItem();
+       
         // get all questions from the database
         ArrayList<Question> questions = Database.getQuestions(quiz.getQuizID());
         
