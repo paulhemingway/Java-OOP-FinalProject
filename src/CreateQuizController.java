@@ -63,7 +63,7 @@ public class CreateQuizController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        errorMessage = "";
     }    
 
     @FXML
@@ -90,11 +90,19 @@ public class CreateQuizController implements Initializable {
             if(emptyInput(tfTitle) || emptyInput(tfQuestion) || emptyInput(tfCorrectAnswer) || emptyInput(tfOption1)){
                 throw new InvalidInputException("Please fill out the required fields.");
             }
+            if(tfTitle.getText().length() > 50){
+                throw new InvalidInputException("Title must not exceed 50 characters!");
+            }
+            
             TextField[] optionsArray = new TextField[]{tfCorrectAnswer, tfOption1, tfOption2, tfOption3};
             
             for (TextField i : optionsArray){
                 if(!i.getText().trim().isEmpty()){
+                    if(i.getText().length() > 150){
+                        throw new InvalidInputException("Options must not exceed 150 characters!");
+                    }
                     options.add(i.getText());
+                    lbError.setText("");
                 }
             }
             
@@ -110,16 +118,17 @@ public class CreateQuizController implements Initializable {
     }
 
     @FXML
-    private void CreateQuiz(ActionEvent event) {
+    private void CreateQuiz(ActionEvent event) throws IOException{
         try {
             if(questions.isEmpty()){
-                throw new EmptyQuestionsException("You must have at least 1 question! It can't be THAT easy to pass!");
+                throw new EmptyQuestionsException("You must have at least 1 question!\nIs it even a quiz?");
             }
             
             // add parameters
             Quiz quiz = new Quiz(tfTitle.getText(), Data.currentTeacher.getUsername(), questions);
             if(Data.currentTeacher.postQuiz(quiz)){
-                System.out.println("Quiz created.");
+                AlertBox.display("Success!", "Your quiz has been created!");
+                changeScenes("FXMLFiles/Home.fxml");
             }
         }
         catch(EmptyQuestionsException e){AlertBox.display("No questions!", e.getMessage());}

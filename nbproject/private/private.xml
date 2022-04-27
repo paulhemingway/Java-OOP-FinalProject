@@ -5,20 +5,18 @@
             <url>src/ChooseQuizController.java</url>
             <bookmark id="1">
                 <name/>
-                <line>105</line>
+                <line>107</line>
                 <key/>
             </bookmark>
         </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/paulhemingway/NetBeansProjects/pshfmgFinalProject/src/CreateQuizController.java</file>
+            <file>file:/Users/paulhemingway/NetBeansProjects/pshfmgFinalProject/src/Score.java</file>
+            <file>file:/Users/paulhemingway/NetBeansProjects/pshfmgFinalProject/src/HomeController.java</file>
             <file>file:/Users/paulhemingway/NetBeansProjects/pshfmgFinalProject/src/Quiz.java</file>
-            <file>file:/Users/paulhemingway/NetBeansProjects/pshfmgFinalProject/src/ChooseQuizController.java</file>
-            <file>file:/Users/paulhemingway/NetBeansProjects/pshfmgFinalProject/src/TakeQuizController.java</file>
-            <file>file:/Users/paulhemingway/NetBeansProjects/pshfmgFinalProject/src/FXMLFiles/ChooseQuiz.fxml</file>
-            <file>file:/Users/paulhemingway/NetBeansProjects/pshfmgFinalProject/src/Question.java</file>
-            <file>file:/Users/paulhemingway/NetBeansProjects/pshfmgFinalProject/src/Data.java</file>
+            <file>file:/Users/paulhemingway/NetBeansProjects/pshfmgFinalProject/src/TeacherViewScores.java</file>
+            <file>file:/Users/paulhemingway/NetBeansProjects/pshfmgFinalProject/src/StudentViewScoresController.java</file>
         </group>
     </open-files>
 </project-private>

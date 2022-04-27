@@ -78,7 +78,8 @@ public class HomeController implements Initializable {
     }
 
     @FXML
-    private void goToViewQuizScores(ActionEvent event) {
+    private void goToViewQuizScores(ActionEvent event) throws IOException{
+        changeScenes("FXMLFiles/TeacherViewScores.fxml");
     }
 
     @FXML
@@ -87,7 +88,8 @@ public class HomeController implements Initializable {
     }
 
     @FXML
-    private void viewMyScores(ActionEvent event) {
+    private void viewMyScores(ActionEvent event) throws IOException{
+        changeScenes("FXMLFiles/StudentViewScores.fxml");
     }
 
     @FXML

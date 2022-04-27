@@ -35,12 +35,12 @@ public class Database {
     }
     
     // function to pull all data from specific table
-    public static ArrayList<HashMap<String,Object>> getAll(String table) throws Exception{
+    public static ArrayList<HashMap<String,Object>> getAll(String query) throws Exception{
         ArrayList<HashMap<String, Object>> resultList = new ArrayList<HashMap<String, Object>>();
         HashMap<String,Object> row;
         try {
             Connection con = getConnection();
-            PreparedStatement statement = con.prepareStatement("SELECT * FROM " + table);
+            PreparedStatement statement = con.prepareStatement(query);
             ResultSet result = statement.executeQuery();
             
             // get the information on the columns

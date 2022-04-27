@@ -72,11 +72,11 @@ public class ChooseQuizController implements Initializable {
     }
     
     private ObservableList<Quiz> getQuizzes() throws Exception{
-        ArrayList<HashMap<String, Object>> quizMap = Database.getAll("quizzes");
+        ArrayList<HashMap<String, Object>> quizMap = Database.getAll("select q.quizID, q.title, a.lastName from quizzes q, accounts a where q.author = a.username");
         ArrayList<Quiz> quizzes = new ArrayList();
         
         for (HashMap i : quizMap){
-            Quiz quiz = new Quiz((Integer)i.get("quizID"), (String)i.get("author"), (String)i.get("title"));
+            Quiz quiz = new Quiz((Integer)i.get("quizID"), (String)i.get("lastName"), (String)i.get("title"));
             
             quizzes.add(quiz);
         }
@@ -98,11 +98,13 @@ public class ChooseQuizController implements Initializable {
     @FXML
     private void takeQuiz(ActionEvent event) throws Exception {
         Quiz quiz = quizTable.getSelectionModel().getSelectedItem();
-       
-        // get all questions from the database
-        ArrayList<Question> questions = Database.getQuestions(quiz.getQuizID());
         
-        Data.currentQuiz = new Quiz(quiz.getQuizID(), questions, quiz.getTitle(), questions.size());
-        changeScenes("FXMLFiles/TakeQuiz.fxml");
+        if(quiz != null){
+            // get all questions from the database
+            ArrayList<Question> questions = Database.getQuestions(quiz.getQuizID());
+
+            Data.currentQuiz = new Quiz(quiz.getQuizID(), questions, quiz.getTitle(), questions.size());
+            changeScenes("FXMLFiles/TakeQuiz.fxml");
+        } 
     }
 }

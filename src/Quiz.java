@@ -33,6 +33,12 @@ public class Quiz {
         this.questionCount = questionCount;
     }
     
+    //constructor for populating quiz table in teacher view score scene
+    public Quiz(Integer quizID, String title){
+        this.quizID = quizID;
+        this.title = title;
+    }
+    
     public String getTitle(){
         return this.title;
     }

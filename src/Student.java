@@ -1,3 +1,5 @@
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 /**
  *
@@ -6,7 +8,6 @@ import java.util.*;
 public class Student extends Account{
     
     private final String accountType = "Student";
-    Map scores = new HashMap();
     
     public Student(String username, String password, String firstName, String lastName){
         super(username, password, firstName, lastName);
@@ -25,8 +26,15 @@ public class Student extends Account{
         }
         return false;
     }
-    
-    public void getScores(){
+    public void postScore(int score) throws Exception{
         
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");  
+        LocalDateTime now = LocalDateTime.now();  
+        
+        String query = String.format("INSERT INTO scores (quizID, username, score, scoreDate) VALUES ('%d', '%s', '%d', '%s')", 
+                    Data.currentQuiz.getQuizID(), this.getUsername(), score, dtf.format(now));
+        Database.post(query);
     }
+    
+
 }

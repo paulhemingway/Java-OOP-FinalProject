@@ -26,6 +26,8 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import java.time.format.DateTimeFormatter;  
+import java.time.LocalDateTime;    
 
 /**
  * FXML Controller class
@@ -104,9 +106,9 @@ public class TakeQuizController implements Initializable {
                 }
             }
             
-            String query = String.format("INSERT INTO scores (quizID, username, score) VALUES ('%d', '%s', '%d')", 
-                    Data.currentQuiz.getQuizID(), Data.currentStudent.getUsername(), score);
-            Database.post(query);
+            
+            
+            Data.currentStudent.postScore(score);
             
             AlertBox.display("Success!", "You have finished the quiz!\nAre you proud of yourself?");
             Data.currentQuiz = null;
