@@ -7,14 +7,20 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #fff6cf;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HomeController">
    <children>
-      <Label fx:id="welcome" alignment="CENTER" layoutX="144.0" layoutY="26.0" prefHeight="17.0" prefWidth="313.0">
+      <Label fx:id="welcome" alignment="CENTER" layoutX="144.0" layoutY="26.0" prefHeight="17.0" prefWidth="313.0" text="Welcome!">
          <font>
-            <Font size="22.0" />
+            <Font name="System Font" size="22.0" />
          </font></Label>
-      <Button fx:id="btnCreateQuiz" layoutX="144.0" layoutY="189.0" mnemonicParsing="false" onAction="#goToCreateQuizScene" prefHeight="26.0" prefWidth="131.0" text="Create a Quiz" visible="false" />
-      <Button fx:id="btnViewQuizScores" layoutX="326.0" layoutY="189.0" mnemonicParsing="false" onAction="#goToViewQuizScores" prefHeight="26.0" prefWidth="131.0" text="View Quiz Scores" visible="false" />
-      <Button fx:id="btnTakeQuiz" layoutX="144.0" layoutY="189.0" mnemonicParsing="false" onAction="#takeQuiz" prefHeight="26.0" prefWidth="131.0" text="Take a Quiz" visible="false" />
-      <Button fx:id="btnViewMyScores" layoutX="326.0" layoutY="189.0" mnemonicParsing="false" onAction="#viewMyScores" prefHeight="26.0" prefWidth="131.0" text="View My Scores" visible="false" />
+      <Button fx:id="btnCreateQuiz" layoutX="147.0" layoutY="173.0" mnemonicParsing="false" onAction="#goToCreateQuizScene" prefHeight="54.0" prefWidth="127.0" text="Create a Quiz">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Button>
+      <Button fx:id="btnViewQuizScores" layoutX="328.0" layoutY="173.0" mnemonicParsing="false" onAction="#goToViewQuizScores" prefHeight="55.0" prefWidth="127.0" text="View Quiz Scores">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <Button fx:id="btnTakeQuiz" layoutX="144.0" layoutY="175.0" mnemonicParsing="false" onAction="#takeQuiz" prefHeight="52.0" prefWidth="131.0" text="Take a Quiz" visible="false" />
+      <Button fx:id="btnViewMyScores" layoutX="326.0" layoutY="173.0" mnemonicParsing="false" onAction="#viewMyScores" prefHeight="52.0" prefWidth="131.0" text="View My Scores" visible="false" />
       <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#logOut" text="Log out" />
    </children>
 </AnchorPane>

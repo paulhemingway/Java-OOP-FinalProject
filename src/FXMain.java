@@ -6,8 +6,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
-
 /**
  *
  * @author paulhemingway
@@ -21,7 +19,7 @@ public class FXMain extends Application {
             
             Scene scene = new Scene(root);
             
-            primaryStage.setTitle("Paul's Final Project");
+            primaryStage.setTitle("Quiz-It");
             primaryStage.setMinHeight(400);
             primaryStage.setMinWidth(600);
             primaryStage.setScene(scene);

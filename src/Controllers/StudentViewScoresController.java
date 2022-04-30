@@ -28,7 +28,6 @@ public class StudentViewScoresController implements Initializable {
 
     @FXML
     private TableView<Score> scoreTable;
-    
     ObservableList<Score> scores;
     @FXML
     private TableColumn<Score, String> teacherCol;
@@ -41,14 +40,14 @@ public class StudentViewScoresController implements Initializable {
     @FXML
     private Button btnBack;
     
-    
-
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        // can't select from this table
         scoreTable.setSelectionModel(null);
         fillTable();
     }    
     
+    // assign each column to a property of score in order to fill all the data from an observable list
     public void fillTable() {
         try {
             scores = getScores();

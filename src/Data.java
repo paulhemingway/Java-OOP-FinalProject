@@ -1,11 +1,17 @@
 
-import java.util.ArrayList;
+import java.io.IOException;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
 /**
  *
  * @author paulhemingway
  */
 
 // class to hold the current user data
+// used to keep consistent information when switching scenes
 public class Data {
     public static Teacher currentTeacher = null;
     public static Student currentStudent = null;
@@ -20,4 +26,5 @@ public class Data {
         isStudent = false;
     }
     
+
 }

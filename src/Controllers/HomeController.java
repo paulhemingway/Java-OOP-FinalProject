@@ -1,8 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -15,7 +10,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-
 /**
  * FXML Controller class
  *
@@ -33,25 +27,16 @@ public class HomeController implements Initializable {
     private Button btnTakeQuiz;
     @FXML
     private Button btnViewMyScores;
-    
-    Student currentStudent;
-    Teacher currentTeacher;
-    
-    
-    /**
-     * Initializes the controller class.
-     * @param url
-     * @param rb
-     */
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         String greeting = "";
         if(Data.isTeacher){
-            currentTeacher = (Teacher)Data.currentTeacher;
-            greeting = String.format("Welcome, %s %s!", currentTeacher.getFirstName(), currentTeacher.getLastName());
+            Teacher currentTeacher = Data.currentTeacher;
+            greeting = String.format("Welcome, %s %s!", Data.currentTeacher.getFirstName(), Data.currentTeacher.getLastName());
         } else {
-            currentStudent = (Student)Data.currentStudent;
-            greeting = String.format("Welcome, %s %s!", currentStudent.getFirstName(), currentStudent.getLastName());
+            Student currentStudent = Data.currentStudent;
+            greeting = String.format("Welcome, %s %s!", Data.currentStudent.getFirstName(), Data.currentStudent.getLastName());
         }
         welcome.setText(greeting);
         
@@ -97,8 +82,4 @@ public class HomeController implements Initializable {
         Data.clearCurrent();
         changeScenes("FXMLFiles/Login.fxml");
     }
-    
-    
-
-
 }

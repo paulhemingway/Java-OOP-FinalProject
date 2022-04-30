@@ -2,10 +2,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -53,6 +50,8 @@ public class ChooseQuizController implements Initializable {
     public void fillTable() {
         try {
             quizzes = getQuizzes();
+            
+            // set the columns to specific properties of the quiz class
             quizIDColumn.setCellValueFactory(new PropertyValueFactory("quizID"));
             titleColumn.setCellValueFactory(new PropertyValueFactory("title"));
             teacherColumn.setCellValueFactory(new PropertyValueFactory("author"));
@@ -71,16 +70,21 @@ public class ChooseQuizController implements Initializable {
         changeScenes("FXMLFiles/Home.fxml");
     }
     
+    // returns an observable list to populate the table view
     private ObservableList<Quiz> getQuizzes() throws Exception{
-        ArrayList<HashMap<String, Object>> quizMap = Database.getAll("select q.quizID, q.title, a.lastName from quizzes q, accounts a where q.author = a.username");
+        // this method returns an arraylist of a hashmap. Basically an arraylist of records
+        ArrayList<HashMap<String, Object>> quizMap = Database.getAll("SELECT q.quizID, q.title, a.lastName FROM quizzes q, accounts a WHERE q.author = a.username");
         ArrayList<Quiz> quizzes = new ArrayList();
         
+        // for each hashmap (record) in the arraylist, create a quiz object out of it 
+        // and add that quiz to the quizzes arraylist
         for (HashMap i : quizMap){
             Quiz quiz = new Quiz((Integer)i.get("quizID"), (String)i.get("lastName"), (String)i.get("title"));
             
             quizzes.add(quiz);
         }
         
+        // convert arraylist to observable list and return it
         return FXCollections.observableArrayList(quizzes);
     }
     
@@ -97,12 +101,14 @@ public class ChooseQuizController implements Initializable {
 
     @FXML
     private void takeQuiz(ActionEvent event) throws Exception {
+        // get current selected quiz on the table view and make that the current quiz
         Quiz quiz = quizTable.getSelectionModel().getSelectedItem();
         
         if(quiz != null){
             // get all questions from the database
             ArrayList<Question> questions = Database.getQuestions(quiz.getQuizID());
 
+            
             Data.currentQuiz = new Quiz(quiz.getQuizID(), questions, quiz.getTitle(), questions.size());
             changeScenes("FXMLFiles/TakeQuiz.fxml");
         } 

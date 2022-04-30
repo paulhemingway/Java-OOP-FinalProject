@@ -1,11 +1,11 @@
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -31,10 +31,9 @@ public class LoginController implements Initializable {
     private PasswordField inputPassword;
     @FXML
     private Label lbError;
+    @FXML
+    private Button btnExit;
 
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -49,9 +48,11 @@ public class LoginController implements Initializable {
         
         String[] x = Database.checkLogin(username, password);
         
+        // if it only brought back 1 string, that string will be an error message. 
         if(x.length == 1){
             errorMessage = x[0];
         } else {
+            // check x[4], which is the account type. 
             if (x[4].equals("Teacher")){
                 Data.currentTeacher = new Teacher(x[0], x[1], x[2], x[3]);
                 Data.isTeacher = true;
@@ -78,6 +79,11 @@ public class LoginController implements Initializable {
         
         window.setScene(tableViewScene);
         window.show();
+    }
+
+    @FXML
+    private void exitProgram(ActionEvent event) {
+        Platform.exit();
     }
     
 }

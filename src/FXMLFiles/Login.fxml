@@ -6,6 +6,7 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -30,14 +31,23 @@
                   <Insets bottom="10.0" />
                </VBox.margin>
             </PasswordField>
-            <Button fx:id="btnSignIn" mnemonicParsing="false" onAction="#checkLogin" prefHeight="26.0" prefWidth="80.0" text="Sign In">
-               <VBox.margin>
-                  <Insets bottom="10.0" />
-               </VBox.margin>
-            </Button>
-            <Button fx:id="btnSignUp" mnemonicParsing="false" onAction="#goToCreateAccount" prefHeight="26.0" prefWidth="80.0" text="Sign Up" />
+            <HBox alignment="CENTER" prefHeight="27.0" prefWidth="199.0">
+               <children>
+                  <Button fx:id="btnSignIn" mnemonicParsing="false" onAction="#checkLogin" prefHeight="26.0" prefWidth="80.0" text="Sign In">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="btnSignUp" mnemonicParsing="false" onAction="#goToCreateAccount" prefHeight="26.0" prefWidth="80.0" text="Sign Up">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
             <Label fx:id="lbError" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="266.0" textAlignment="CENTER" textFill="RED" />
          </children>
       </VBox>
+      <Button fx:id="btnExit" layoutX="14.0" layoutY="361.0" mnemonicParsing="false" onAction="#exitProgram" text="Exit" />
    </children>
 </AnchorPane>

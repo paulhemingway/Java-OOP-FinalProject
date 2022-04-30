@@ -1,13 +1,10 @@
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -19,9 +16,6 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import Exceptions.*;
-import java.util.Optional;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 
 /**
  * FXML Controller class
@@ -67,21 +61,6 @@ public class CreateAccountController implements Initializable {
         // TODO
     }    
     
-    public void showDefaultFields(){
-        
-        lbFirstName.setVisible(true);
-        lbLastName.setVisible(true);
-        tfFirstName.setVisible(true);
-        tfLastName.setVisible(true);
-        
-        lbUsername.setVisible(true);
-        lbPassword.setVisible(true);
-        tfUsername.setVisible(true);
-        tfPassword.setVisible(true);
-        
-        btnCreateAccount.setVisible(true);
-    }
-    
     public void clearFields(){
         tfFirstName.clear();
         tfLastName.clear();
@@ -111,10 +90,9 @@ public class CreateAccountController implements Initializable {
         // must start/end with a letter, can contain '-,. and must be 1-25 characters
         final String namePattern = "(?i)[a-z]([- ',.a-z]{0,23}[a-z])?";
         
+        // exceptions for input validation
         try{
             valid = true;
-
-            boolean taken = Database.usernameExists(username);
           
             if(!isValid(usernamePattern, username)){
                 valid = false;
@@ -128,7 +106,7 @@ public class CreateAccountController implements Initializable {
                 valid = false;
                 throw new InvalidInputException("Password must be 1-24 characters!");
             }
-            if(taken){
+            if(Database.usernameExists(username)){
                 valid = false;
                 throw new NameTakenException("Username is already taken!\nPlease try again.");
             }
@@ -151,6 +129,7 @@ public class CreateAccountController implements Initializable {
         catch (Exception e){errorMessage = e.getMessage();}
         
         finally {
+            // set the error text to the first exception that was caught
             if (valid == false){
                 lbError.setText(errorMessage);
             } else {
@@ -160,6 +139,7 @@ public class CreateAccountController implements Initializable {
         
     }
     
+    // see if the input matches the given pattern
     public boolean isValid(String pattern, String input){
         return input.matches(pattern);
     }
@@ -185,7 +165,7 @@ public class CreateAccountController implements Initializable {
     }
     
     public void goToLogin() throws IOException{
-         Parent tableViewParent = FXMLLoader.load(getClass().getResource("FXMLFiles/Login.fxml"));
+        Parent tableViewParent = FXMLLoader.load(getClass().getResource("FXMLFiles/Login.fxml"));
         Scene tableViewScene = new Scene(tableViewParent);
         
         //get the current stage information
