@@ -100,5 +100,4 @@ public class StudentViewScoresController implements Initializable {
         window.setScene(tableViewScene);
         window.show();
     }
-    
 }

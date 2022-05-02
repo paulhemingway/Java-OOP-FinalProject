@@ -1,10 +1,3 @@
-
-import java.io.IOException;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-
 /**
  *
  * @author paulhemingway
@@ -25,6 +18,4 @@ public class Data {
         isTeacher = false;
         isStudent = false;
     }
-    
-
 }

@@ -48,6 +48,6 @@
             <Label fx:id="lbError" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="266.0" textAlignment="CENTER" textFill="RED" />
          </children>
       </VBox>
-      <Button fx:id="btnExit" layoutX="14.0" layoutY="361.0" mnemonicParsing="false" onAction="#exitProgram" text="Exit" />
+      <Button fx:id="btnExit" layoutX="14.0" layoutY="361.0" mnemonicParsing="false" onAction="#exitProgram" text="Exit" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="14.0" />
    </children>
 </AnchorPane>

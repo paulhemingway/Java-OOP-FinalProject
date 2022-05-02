@@ -85,5 +85,4 @@ public class LoginController implements Initializable {
     private void exitProgram(ActionEvent event) {
         Platform.exit();
     }
-    
 }

@@ -41,5 +41,4 @@ public class Score {
     public String getStudent(){
         return student;
     }
-    
 }

@@ -174,7 +174,4 @@ public class CreateAccountController implements Initializable {
         window.setScene(tableViewScene);
         window.show();
     }
-    
-    
-    
 }

@@ -15,6 +15,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextInputControl;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
@@ -51,6 +53,10 @@ public class CreateQuizController implements Initializable {
     ArrayList<Question> questions = new ArrayList();
     @FXML
     private Button btnBack;
+    @FXML
+    private VBox vbox1;
+    @FXML
+    private VBox vbox2;
     /**
      * Initializes the controller class.
      */
@@ -73,7 +79,6 @@ public class CreateQuizController implements Initializable {
         lvQuestionList.getItems().remove(selected);
     }
 
-    
     @FXML
     private void addQuestion(ActionEvent event) {
         lbError.setText("");
@@ -173,5 +178,4 @@ public class CreateQuizController implements Initializable {
         errorMessage = "";
         changeScenes("FXMLFiles/Home.fxml");
     }
-    
 }

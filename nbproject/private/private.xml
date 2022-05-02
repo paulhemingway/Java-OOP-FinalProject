@@ -12,10 +12,7 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/paulhemingway/NetBeansProjects/pshfmgFinalProject/src/Score.java</file>
-            <file>file:/Users/paulhemingway/NetBeansProjects/pshfmgFinalProject/src/LoginController.java</file>
-            <file>file:/Users/paulhemingway/NetBeansProjects/pshfmgFinalProject/src/TeacherViewScores.java</file>
-            <file>file:/Users/paulhemingway/NetBeansProjects/pshfmgFinalProject/src/StudentViewScoresController.java</file>
+            <file>file:/Users/paulhemingway/NetBeansProjects/pshfmgFinalProject/src/Controllers/CreateQuizController.java</file>
         </group>
     </open-files>
 </project-private>

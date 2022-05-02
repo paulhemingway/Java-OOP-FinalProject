@@ -6,6 +6,7 @@ import java.sql.Statement;
 import java.sql.ResultSetMetaData;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.sql.SQLException;
 
 /**
  *
@@ -26,9 +27,11 @@ public class Database {
             Class.forName(driver);
             
             Connection conn = DriverManager.getConnection(url, user, password);
+            System.out.println("Connected!!");
+            // return the connection
             return conn;
         }
-        catch (Exception e){ System.out.println(e);  }
+        catch (SQLException e){ System.out.println(e);  }
         // if it doesn't connect, return null
         return null;
     }
@@ -196,7 +199,6 @@ public class Database {
                 }
                 resultList.add(row);
             }
-            
             con.close();
             
             for (HashMap<String, Object> i : resultList){
@@ -209,8 +211,6 @@ public class Database {
         } catch (Exception e) {
             System.out.println(e);
         }
-        
         return null;
     }
-    
 }

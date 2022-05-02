@@ -60,7 +60,6 @@ public class TakeQuizController implements Initializable {
         }
         lbTitle.setText(Data.currentQuiz.getTitle());
         updateQuestion(currentQuestionNumber);
-        
     }    
 
     @FXML
@@ -179,6 +178,4 @@ public class TakeQuizController implements Initializable {
         window.setScene(tableViewScene);
         window.show();
     }
-
-    
 }

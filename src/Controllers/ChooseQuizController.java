@@ -38,7 +38,6 @@ public class ChooseQuizController implements Initializable {
     private TableColumn<Quiz, String> titleColumn;
     @FXML
     private TableColumn<Quiz, String> teacherColumn;
-
     /**
      * Initializes the controller class.
      */
