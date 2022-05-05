@@ -76,6 +76,7 @@ public class CreateAccountController implements Initializable {
 
     @FXML
     private void createAccount(ActionEvent event) {
+        borderNone();
         String username = tfUsername.getText();
         String password = tfPassword.getText();
         String firstName = tfFirstName.getText();
@@ -95,28 +96,39 @@ public class CreateAccountController implements Initializable {
             valid = true;
           
             if(!isValid(usernamePattern, username)){
+                borderRed(tfUsername);
                 valid = false;
                 throw new InvalidInputException("Username is invalid!\nMust be 5-18 characters.\nMust start with a letter.\nCan only contain letters, numbers, and underscores.\n");
             }
             if(tfPassword.getText().trim().isEmpty()){
+                borderRed(tfPassword);
                 valid = false;
                 throw new EmptyFieldException("Please input a password!");
             }
             if(tfPassword.getText().length() >= 24){
+                borderRed(tfPassword);
                 valid = false;
                 throw new InvalidInputException("Password must be 1-24 characters!");
             }
-            if(Database.usernameExists(username)){
+            if(!isValid(namePattern, firstName)){
+                borderRed(tfFirstName);
                 valid = false;
-                throw new NameTakenException("Username is already taken!\nPlease try again.");
+                throw new InvalidInputException("First name is invalid!\nMust be 1-25 characters.\nMust start/end with a letter.\nCan contain ['-,.].");
             }
-            if(!isValid(namePattern, firstName) || !isValid(namePattern, lastName)){
+            if(!isValid(namePattern, lastName)){
+                borderRed(tfLastName);
                 valid = false;
-                throw new InvalidInputException("First and/or last name is invalid!\nMust be 1-25 characters.\nMust start/end with a letter.\nCan contain ['-,.].");
+                throw new InvalidInputException("Last name is invalid!\nMust be 1-25 characters.\nMust start/end with a letter.\nCan contain ['-,.].");
             }
             if(accountType.getSelectedToggle() == null){
                 valid = false;
                 throw new EmptyFieldException("Please select account type!\nStudent or Teacher.");
+            }
+            // check for username last just so it doesn't unnecessarily connect to the database.
+            if(Database.usernameExists(username)){
+                borderRed(tfUsername);
+                valid = false;
+                throw new NameTakenException("Username is already taken!\nPlease try again.");
             }
             
             if(valid){
@@ -173,5 +185,16 @@ public class CreateAccountController implements Initializable {
         
         window.setScene(tableViewScene);
         window.show();
+    }
+    
+    public void borderRed(TextField element){
+        element.setStyle("-fx-border-color: red;");
+    }
+    
+    public void borderNone(){
+        tfUsername.setStyle("-fx-border-color: none;");
+        tfPassword.setStyle("-fx-border-color: none;");
+        tfFirstName.setStyle("-fx-border-color: none;");
+        tfLastName.setStyle("-fx-border-color: none;");
     }
 }

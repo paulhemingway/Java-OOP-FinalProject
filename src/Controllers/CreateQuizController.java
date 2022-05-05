@@ -81,13 +81,14 @@ public class CreateQuizController implements Initializable {
 
     @FXML
     private void addQuestion(ActionEvent event) {
+        errorMessage = "";
         lbError.setText("");
         Question question = null;
         ArrayList<String> options = new ArrayList<String>();
         try {
             // check for empty fields
             if(emptyInput(tfTitle) || emptyInput(tfQuestion) || emptyInput(tfCorrectAnswer) || emptyInput(tfOption1)){
-                throw new InvalidInputException("Please fill out the required fields.");
+                throw new EmptyFieldException("Please fill out the required fields.");
             }
             
             // check title length. if it exceeds 50, set border color to red
@@ -122,6 +123,7 @@ public class CreateQuizController implements Initializable {
             clearAll();
         }
         catch (InvalidInputException e){errorMessage = e.getMessage();}
+        catch (EmptyFieldException e){errorMessage = e.getMessage();}
         
         lbError.setText(errorMessage);
     }

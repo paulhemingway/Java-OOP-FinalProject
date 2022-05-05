@@ -10,7 +10,7 @@
 
 <AnchorPane id="AnchorPane" focusTraversable="true" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #fff6cf;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TakeQuizController">
    <children>
-      <VBox fx:id="optionsBox" alignment="CENTER_LEFT" layoutX="96.0" layoutY="127.0" prefHeight="200.0" prefWidth="410.0" style="-fx-background-color: white; -fx-border-width: 2px; -fx-border-color: #ffe570;">
+      <VBox fx:id="optionsBox" alignment="CENTER_LEFT" layoutX="96.0" layoutY="127.0" prefHeight="200.0" prefWidth="410.0" style="-fx-background-color: white; -fx-border-width: 2px; -fx-border-color: #ffe570;" AnchorPane.bottomAnchor="73.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="127.0">
          <opaqueInsets>
             <Insets left="20.0" />
          </opaqueInsets>

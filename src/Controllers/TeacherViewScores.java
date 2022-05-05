@@ -79,6 +79,9 @@ public class TeacherViewScores implements Initializable {
         scoreTable.getItems().clear();
         try {
             scores = getScores(quizID);
+            if(scores.size() == 0){
+                scoreTable.setPlaceholder(new Label("There are no scores for this quiz!"));
+            }
             studentCol.setCellValueFactory(new PropertyValueFactory("student"));
             scoreCol.setCellValueFactory(new PropertyValueFactory("score"));
             scoreTable.getColumns().clear();
